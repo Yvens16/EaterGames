@@ -32,19 +32,41 @@ function preload (){
 
 
 function create (){
-  this.add.image(300,400,'back');
-  // this.add.image(300, 400, 'ran');
 
-  platforms = this.physics.add.staticGroup();       
+  this.add.image(300,400,'back');
+
+  platforms = this.physics.add.staticGroup();   
+
 
   platforms.create(300, 798, 'ground').setScale(2).refreshBody();
+  this.alpha=0,1;
 
-player = this.physics.add.sprite(100, 650, 'ran').setScale(0.4);
+player = this.physics.add.sprite(100, 650, 'ran').setScale(0.4).setInteractive();
 player.setBounce(0.2);
 player.setCollideWorldBounds(true);
 
 
 this.physics.add.collider(player, platforms);
+
+//------------- DRAGGABLE IMAGE ----------------------
+// var player=this.add.sprite(200,300,'ran').setInteractive();
+this.input.setDraggable(player);
+
+
+this.input.dragDistanceThreshold = 10;
+
+this.input.on('dragstart', function (pointer, gameObject){
+});
+
+this.input.on('drag', function(pointer, gameObject, dragX, dragY){
+  gameObject.x = dragX;
+  gameObject.y = dragY;
+});
+
+this.input.on('dragend', function (pointer, gameObject){
+  gameObject.clearTint();
+});
+//------------- DRAGGABLE IMAGE ----------------------
 
 
 }
