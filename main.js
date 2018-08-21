@@ -18,12 +18,14 @@ var config = {
 
 var player;
 var platforms;
+var burger;
 
 var game = new Phaser.Game(config);
 
 function preload (){
   this.load.image('back', './2-31.jpg');
   this.load.image('ran', './frame-2.png');
+  this.load.image('burger', './burger.png');
   // this.load.spritesheet('run', './spritesheet.png', { frameWidth: 64, frameHeight: 48 });
   this.load.image('ground',"./platform.png");
 
@@ -69,46 +71,28 @@ this.input.on('dragend', function (pointer, gameObject){
 //------------- DRAGGABLE IMAGE ----------------------
 
 
+//------------- FALLING BURGER OBJ----------------------
+burger = this.physics.add.group({
+  key:'burger',
+  repeat:500,
+  setXY: {x:80, y:0, stepX: 120 },
+  setScale: { x: 0.1, y: 0.1, stepY: 0 }
+});
+
+burger.children.iterate(function (child){
+  child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+});
+
+this.physics.add.overlap(player, burger, collectBurger, null,this);
+
+function collectBurger(player, burger){
+  burger.disableBody(true, true);
+}
+//------------- FALLING BURGER OBJ----------------------
+
 }
 
 
 function update (){
 }
 
-// game.load.image('sonic', 'assets/sprites/sonic_havok_sanity.png');
-// var sonic = group.create(300, 200, 'sonic');
-
-//     sonic.inputEnabled = true;
-//     sonic.input.enableDrag();
-//     sonic.events.onDragStart.add(onDragStart, this);
-//     sonic.events.onDragStop.add(onDragStop, this);
-
-//     group.onChildInputDown.add(onDown, this);
-
-// }
-
-// function onDown(sprite, pointer) {
-
-//     result = "Down " + sprite.key;
-
-//     console.log('down', sprite.key);
-
-// }
-
-// function onDragStart(sprite, pointer) {
-
-//     result = "Dragging " + sprite.key;
-
-// }
-
-// function onDragStop(sprite, pointer) {
-
-//     result = sprite.key + " dropped at x:" + pointer.x + " y: " + pointer.y;
-
-//     if (pointer.y > 400)
-//     {
-//         console.log('input disabled on', sprite.key);
-//         sprite.input.enabled = false;
-
-//         sprite.sendToBack();
-//     }
