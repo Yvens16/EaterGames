@@ -10,11 +10,17 @@ class games extends Phaser.Scene {
   this.load.image('ground',"./platform.png");
   }
 
+
+
+  
   create(){
 
     var player;
 var platforms;
 var burger;
+var burgers= [];
+var broco;
+var brocos=[];
 var score = 0;
 var scoreText;
 
@@ -76,7 +82,7 @@ var scoreText;
   //------------- FALLING BURGER OBJ----------------------
   
   //------------- FALLING Brocolli OBJ----------------------
-  var broco = this.physics.add.group({
+   broco = this.physics.add.group({
     key:'broco',
     repeat:4,
     setXY: {x:80, y:0, stepX: 120 },
@@ -104,6 +110,9 @@ var scoreText;
   }
 
  update (){
+for (var i= 0; i< broco; i++){
+  brocos.push([broco, speed]);
+}
   }
 }
   
