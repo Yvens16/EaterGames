@@ -42,7 +42,6 @@ function preload (){
 }
 
 
-
 function create (){
 
   this.add.image(300,400,'back');
@@ -50,12 +49,12 @@ function create (){
   platforms = this.physics.add.staticGroup();   
 
 
-  platforms.create(300, 798, 'ground').setScale(2).refreshBody();
+  platforms.create(300, 798, 'ground').setScale(2).refreshBody().alpha=0;;
   this.alpha=0,1;
 
 player = this.physics.add.sprite(100, 650, 'ran').setScale(0.3).setInteractive();
 player.setBounce(0.2);
-player.setCollideWorldBounds();
+player.setCollideWorldBounds(true);
 
 
 this.physics.add.collider(player, platforms);
@@ -120,7 +119,7 @@ broco.children.iterate(function (child){
 this.physics.add.collider(broco, player, hitBroco);
 
 function hitBroco (player, broco){
-  broco.body.bounce.setTo(2,2);
+  broco.body.bounce.setTo(1,1);
   // player.body.bounce.setTo(1,1);
   // bomb.setCollideWorldBounds(true);
   // broco.setVelocity(Phaser.Math.Between(-900,-900), 0);
