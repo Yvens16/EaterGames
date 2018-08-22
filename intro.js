@@ -3,7 +3,7 @@ class intro extends Phaser.Scene {
     super ({key:"Intro"});
   }
   preload(){
-    this.load.image('Intro','./fat-bobby.png');
+    this.load.image('Intro','./fat-bobby2.png');
     this.load.audio('audioIntro', './Mario.mp3');
   }
   create(){
@@ -13,7 +13,7 @@ class intro extends Phaser.Scene {
     this.soundFX.play();
 
     this.input.keyboard.on("keydown_P", function(e){
-      if (this.soundFX.isPlaying) this.soundFX.pause();
+      if (this.soundFX.isPlaying) this.soundFX.pause(e);
       else this.soundFX.resume();
     },this);
 
