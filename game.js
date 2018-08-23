@@ -89,7 +89,14 @@ class games extends Phaser.Scene {
 
   }, 700);
 
-  
+  var game = this;
+  setInterval(function () {
+    var x = Math.floor(Math.random() * 601);
+    broco = game.physics.add.image(x,0,'broco').setScale(0.4,0.4).setInteractive();
+    game.physics.add.collider(broco, player, hitBroco);
+
+  }, 3000);
+
   
   //-----------------
   //-------------
@@ -98,25 +105,25 @@ class games extends Phaser.Scene {
   function hitBroco (player, broco){
    broco.body.bounce.setTo(1,1);
     player.body.setVelocity(-300);
-    score -=10;
+   score -=10;
     scoreText.setText('score: ' +score);
   }
 
+  console.log(score);
   //------------- FALLING Brocolli OBJ----------------------
   
   scoreText = this.add.text(16,16, 'score:0', {fontSize: '32px', fill: 'red'});
-
-
 
    //------ LOOP FOR FALLING OBJECT----------
 
  //------ LOOP FOR FALLING OBJECT----------
 
- }
+ } 
+
   //--------UPDATE FUNCTION----------
 
  update (){
-
+  
   }
 
 
