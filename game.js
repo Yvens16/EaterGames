@@ -87,7 +87,7 @@ class games extends Phaser.Scene {
     broco = game.physics.add.image(x,0,'broco').setScale(0.1,0.1).setInteractive();
     game.physics.add.collider(broco, player, hitBroco);
 
-  }, 1000);
+  }, 700);
 
   
   
