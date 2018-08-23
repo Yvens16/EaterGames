@@ -23,4 +23,8 @@ class intro extends Phaser.Scene {
       }
     }, this)
   }
+
+  update(){
+   
+  }
 }

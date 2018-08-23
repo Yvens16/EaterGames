@@ -109,7 +109,6 @@ class games extends Phaser.Scene {
     scoreText.setText('score: ' +score);
   }
 
-  console.log(score);
   //------------- FALLING Brocolli OBJ----------------------
   
   scoreText = this.add.text(16,16, 'score:0', {fontSize: '32px', fill: 'red'});
@@ -120,9 +119,17 @@ class games extends Phaser.Scene {
 
  } 
 
+
+
   //--------UPDATE FUNCTION----------
 
  update (){
+ console.log(score);
+ if ( score < 0){
+   this.scene.pause("games");
+   this.scene.start("over");
+
+ }
   
   }
 
