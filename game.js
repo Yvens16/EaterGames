@@ -12,11 +12,8 @@ class games extends Phaser.Scene {
   
 
 
-
-
   
  create(){
-
     //-------BACKGROUND----------
     this.add.image(300,400,'back');
     //-------BACKGROUND----------
@@ -60,21 +57,17 @@ class games extends Phaser.Scene {
   
   
   //------------- FALLING BURGER OBJ----------------------
-  // burger = this.physics.add.group({
-  //   key:'burger',
-  //   repeat:5,
-  //   setXY: {x:80, y:200, stepX: 120,},
-  //   setScale: { x: 0.1, y: 0.1, stepY: 0 },
-    
-  // });
-  burger = this.physics.add.image(300,0,'burger').setScale(0.1,0.1).setInteractive();
-  broco = this.physics.add.image(150,0,'broco').setScale(0.1,0.1).setInteractive();
 
+  var game = this;
+  setInterval(function () {
+    var x = Math.floor(Math.random() * 601);
+    burger = game.physics.add.image(x,0,'burger').setScale(0.1,0.1).setInteractive();
+    game.physics.add.overlap(player, burger, collectBurger, null,game);
+  }, 1000);
+
+  broco = this.physics.add.image(150,0,'broco').setScale(0.1,0.1).setInteractive();
+  burger = this.physics.add.image(100,0,'burger').setScale(0.1,0.1).setInteractive();
   
-  
-  // burger.children.iterate(function (child){
-  //   child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-  // });
   
   this.physics.add.overlap(player, burger, collectBurger, null,this);
   
@@ -83,23 +76,20 @@ class games extends Phaser.Scene {
     score +=10;
     scoreText.setText('Score: ' + score);
   }
+
+  
   //------------- FALLING BURGER OBJ----------------------
   
   //------------- FALLING Brocolli OBJ----------------------
-  //  broco = this.physics.add.group({
-  //   key:'broco',
-  //   repeat:4,
-  //   setXY: {x:50, y:0, stepX: 120 },
-  //   setScale: { x: 0.1, y: 0.1, stepY: 0},
-  // });
-  
-  // broco.children.iterate(function (child){
-  //   child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.7));
-  
-  // });
+  var game = this;
+  setInterval(function () {
+    var x = Math.floor(Math.random() * 601);
+    broco = game.physics.add.image(x,0,'broco').setScale(0.1,0.1).setInteractive();
+    game.physics.add.collider(broco, player, hitBroco);
+
+  }, 1000);
 
   
-
   
   //-----------------
   //-------------
@@ -117,17 +107,30 @@ class games extends Phaser.Scene {
   scoreText = this.add.text(16,16, 'score:0', {fontSize: '32px', fill: 'red'});
 
 
-  // function moveBurgers () {
-  //   var speed = 4;
-  //   += game.time.physicsElapsed * speed;
-  // }
-  }
+
+   //------ LOOP FOR FALLING OBJECT----------
+
+ //------ LOOP FOR FALLING OBJECT----------
+
+ }
+  //--------UPDATE FUNCTION----------
 
  update (){
-   
+
   }
+
+
+
 }
+
+  //--------UPDATE FUNCTION----------
+
+
+
+
+
   
+
 
 
 

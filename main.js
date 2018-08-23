@@ -12,13 +12,13 @@ var config = {
 
 };
 
+
 var player;
 var platforms;
 var burger;
-var burgers= [];
 var broco;
-var brocos=[];
 var score = 0;
 var scoreText;
 
 var game = new Phaser.Game(config);
+
