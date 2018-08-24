@@ -3,7 +3,7 @@ class games extends Phaser.Scene {
     super ({key:"games"});
   }
   preload(){
-  this.load.image('back', './2-31.jpg');
+  this.load.image('back', './bgburger.png');
   this.load.image('ran', './frame-2.png');
   this.load.image('burger', './burger.png');
   this.load.image('broco', './Broccoli.png');
